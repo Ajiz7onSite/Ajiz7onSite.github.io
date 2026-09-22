@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Ajiz7onSite Portfolio — live website templates and web design concepts.">
+<title>Portfolio — Ajiz7onSite</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+<style>
+:root{
+  --green:#13d878;--green2:#8cffc2;--orange:#ff7818;--yellow:#ffd94f;
+  --purple:#8d5cf6;--pink:#ff4fcf;--dark:#07150f;--muted:#68766f;
+  --cream:#f7fff9;--white:#fff;--max:1240px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:"DM Sans",sans-serif;color:var(--dark);background:var(--cream);overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+button,input{font:inherit}
+.bg{position:fixed;inset:0;z-index:-10;overflow:hidden;background:
+radial-gradient(circle at 4% 8%,rgba(19,216,120,.2),transparent 27%),
+radial-gradient(circle at 96% 18%,rgba(141,92,246,.16),transparent 27%),
+radial-gradient(circle at 60% 100%,rgba(255,120,24,.13),transparent 30%),#f7fff9}
+.blob{position:absolute;border-radius:50%;filter:blur(75px);animation:blob 14s ease-in-out infinite alternate}
+.b1{width:350px;height:350px;background:#55ffb1;left:-160px;top:18%}
+.b2{width:290px;height:290px;background:#b992ff;right:-130px;top:38%;animation-delay:-4s}
+.b3{width:320px;height:320px;background:#ffae70;left:38%;bottom:-180px;animation-delay:-8s}
+@keyframes blob{to{transform:translate(70px,-60px) scale(1.12)}}
+.noise{position:fixed;inset:0;z-index:-5;opacity:.035;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+/* NAV */
+.nav-wrap{position:fixed;top:0;left:0;right:0;z-index:1000;padding:18px 22px;transition:.4s}
+.nav-wrap.scrolled{padding:9px 18px}
+.nav{max-width:var(--max);height:68px;margin:auto;padding:0 16px 0 20px;border-radius:22px;display:flex;align-items:center;justify-content:space-between;transition:.4s}
+.nav-wrap.scrolled .nav{color:#fff;background:rgba(7,21,15,.9);border:1px solid rgba(255,255,255,.1);backdrop-filter:blur(18px);box-shadow:0 15px 50px rgba(0,0,0,.16)}
+.brand{display:flex;align-items:center;gap:10px;font:700 17px "Space Grotesk";letter-spacing:-.6px}
+.mark{width:37px;height:37px;border-radius:12px;display:grid;place-items:center;background:linear-gradient(135deg,var(--green),var(--yellow),var(--orange));transform:rotate(-7deg);box-shadow:0 9px 24px rgba(19,216,120,.25)}
+.links{display:flex;gap:5px}.links a{padding:11px 14px;border-radius:12px;font-size:14px;font-weight:700;transition:.25s}
+.links a:hover{background:rgba(19,216,120,.12);color:#079c58}
+.links a.active{color:#079c58}
+.nav-wrap.scrolled .links a:hover,.nav-wrap.scrolled .links a.active{color:var(--green2);background:rgba(255,255,255,.07)}
+.cta{display:inline-flex;align-items:center;gap:8px;padding:12px 16px;border-radius:13px;background:var(--dark);color:#fff;font-size:13px;font-weight:800;transition:.3s}
+.nav-wrap.scrolled .cta{background:linear-gradient(135deg,var(--green),var(--orange));color:var(--dark)}
+.menu{display:none;border:0;background:none;color:inherit;font-size:22px}
+
+/* HERO */
+.hero{padding:160px 22px 70px}
+.container{max-width:var(--max);margin:auto}
+.hero-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:55px;align-items:end}
+.kicker{color:#0ba75d;font-size:11px;font-weight:900;letter-spacing:1.6px;text-transform:uppercase;margin-bottom:10px}
+h1{font:700 clamp(58px,8vw,105px)/.88 "Space Grotesk";letter-spacing:-6px}
+.gradient{background:linear-gradient(100deg,#0bbd68,#13d878 28%,#ff7818 62%,#8d5cf6);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero-copy{margin-top:24px;max-width:450px;color:#5f6d65;font-size:15px;line-height:1.65}
+.hero-stats{display:flex;gap:9px;margin-top:26px;flex-wrap:wrap}
+.stat{padding:12px 14px;border-radius:13px;background:rgba(255,255,255,.72);border:1px solid rgba(7,21,15,.08);font-size:10px;font-weight:800}
+.stat strong{font:700 21px "Space Grotesk";margin-right:5px}
+.hero-visual{min-height:390px;position:relative}
+.hero-card{position:absolute;border-radius:25px;overflow:hidden;background:#fff;border:1px solid rgba(7,21,15,.1);box-shadow:0 30px 75px rgba(7,21,15,.16);transition:.5s}
+.hero-card iframe{width:100%;height:100%;border:0;pointer-events:none}
+.hero-main{width:76%;height:350px;right:0;top:0;transform:rotate(2deg)}
+.hero-side{width:40%;height:235px;left:0;bottom:0;transform:rotate(-6deg);z-index:4}
+.hero-card:hover{transform:translateY(-10px) rotate(0)}
+.browserbar{position:absolute;top:0;left:0;right:0;height:28px;background:rgba(241,245,242,.94);z-index:4;display:flex;align-items:center;gap:5px;padding:0 9px}
+.dot{width:6px;height:6px;border-radius:50%;background:#cbd4ce}
+.address{height:13px;flex:1;border-radius:99px;background:#e0e7e2;margin-left:4px}
+.hero-label{position:absolute;bottom:12px;left:12px;z-index:5;background:rgba(7,21,15,.82);color:#fff;padding:7px 9px;border-radius:9px;font-size:9px;font-weight:900}
+.float{position:absolute;padding:10px 12px;background:rgba(255,255,255,.88);border:1px solid #fff;border-radius:13px;box-shadow:0 15px 35px rgba(7,21,15,.12);font-size:10px;font-weight:800;z-index:8;animation:float 4s ease-in-out infinite}
+.float i{margin-right:5px}.f1{right:2%;top:2%;color:#7950e9}.f2{left:1%;top:37%;color:#08a45a;animation-delay:-1.2s}.f3{right:17%;bottom:0;color:#f06d13;animation-delay:-2.2s}
+@keyframes float{50%{transform:translateY(-11px)}} 
+
+/* TOOLBAR */
+.portfolio{padding:55px 22px 105px}
+.toolbar{display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;padding:13px;margin-bottom:22px;background:rgba(255,255,255,.82);border:1px solid rgba(7,21,15,.08);border-radius:20px;backdrop-filter:blur(15px);box-shadow:0 15px 40px rgba(7,21,15,.05)}
+.filters{display:flex;gap:6px;flex-wrap:wrap}.filter{border:0;background:#eff5f1;color:#5c6962;padding:9px 12px;border-radius:10px;font-size:11px;font-weight:800;cursor:pointer;transition:.25s}.filter:hover{transform:translateY(-2px)}.filter.active{background:var(--dark);color:#fff}
+.tools{display:flex;gap:8px}.search{height:39px;display:flex;align-items:center;gap:8px;padding:0 11px;background:#f2f6f3;border:1px solid rgba(7,21,15,.07);border-radius:11px}.search i{font-size:11px;color:#77847c}.search input{width:180px;background:transparent;border:0;outline:0;font-size:11px}.sort{height:39px;border:1px solid rgba(7,21,15,.07);border-radius:11px;background:#f2f6f3;padding:0 10px;font-size:11px;font-weight:800;color:#59665f}
+
+/* LIVE GRID */
+.grid{display:grid;grid-template-columns:repeat(12,1fr);gap:18px}
+.card{grid-column:span 4;background:#fff;border:1px solid rgba(7,21,15,.08);border-radius:25px;overflow:hidden;box-shadow:0 15px 40px rgba(7,21,15,.055);transition:.45s}
+.card:nth-child(3n+1){grid-column:span 5}.card:nth-child(3n+2){grid-column:span 3}.card:nth-child(3n){grid-column:span 4}
+.card:hover{transform:translateY(-9px);box-shadow:0 30px 70px rgba(7,21,15,.14)}
+.card.hide{display:none}
+.preview{position:relative;height:300px;overflow:hidden;background:#edf4ef;border-bottom:1px solid #e8eee9}
+.preview iframe{position:absolute;left:0;top:27px;width:100%;height:1000px;border:0;transform-origin:top left;pointer-events:none}
+.browserbar.small{position:absolute}
+.hit{position:absolute;inset:27px 0 0;z-index:5}
+.hover{position:absolute;inset:27px 0 0;z-index:6;display:flex;align-items:center;justify-content:center;background:rgba(7,21,15,.2);opacity:0;transition:.3s;pointer-events:none}
+.card:hover .hover{opacity:1}
+.hover span{background:#fff;color:var(--dark);padding:11px 14px;border-radius:12px;font-size:10px;font-weight:900;box-shadow:0 15px 35px rgba(0,0,0,.18)}
+.badge{position:absolute;left:10px;top:38px;z-index:7;background:rgba(7,21,15,.84);color:#fff;padding:7px 8px;border-radius:8px;font-size:8px;font-weight:900;text-transform:uppercase;letter-spacing:.6px}
+.body{padding:17px}.meta{display:flex;justify-content:space-between;color:#7b877f;font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:.6px;margin-bottom:7px}.body h2{font:700 23px "Space Grotesk";letter-spacing:-1px;margin-bottom:6px}.body p{font-size:11px;color:#718078;line-height:1.5;margin-bottom:13px}.foot{display:flex;justify-content:space-between;align-items:center;gap:8px;padding-top:12px;border-top:1px solid #edf1ee}.chips{display:flex;gap:4px;flex-wrap:wrap}.chip{padding:5px 7px;background:#f0f5f1;border-radius:7px;color:#5f6c65;font-size:8px;font-weight:900}.open{font-size:10px;font-weight:900;color:#087e47;white-space:nowrap}.empty{grid-column:1/-1;display:none;text-align:center;padding:55px;background:#fff;border:1px dashed #cbd8cf;border-radius:20px;color:#718078}
+
+/* BOTTOM */
+.bottom{padding:85px 22px}
+.bottom-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.process,.about{padding:35px;border-radius:30px}
+.process{background:var(--dark);color:#fff;overflow:hidden;position:relative}.process:after{content:"";position:absolute;width:260px;height:260px;border-radius:50%;right:-100px;top:-100px;background:linear-gradient(135deg,rgba(19,216,120,.3),rgba(141,92,246,.3));filter:blur(18px)}
+.process h2,.about h2{font:700 34px "Space Grotesk";letter-spacing:-1.7px;position:relative}.steps{margin-top:24px;position:relative}.step{display:grid;grid-template-columns:38px 1fr;gap:13px;padding:14px 0;border-top:1px solid rgba(255,255,255,.1)}.num{width:34px;height:34px;display:grid;place-items:center;border-radius:10px;background:linear-gradient(135deg,var(--green),var(--purple));color:var(--dark);font-size:9px;font-weight:900}.step h3{font-size:12px;margin-bottom:3px}.step p{font-size:10px;color:#9baea4;line-height:1.5}
+.about{background:linear-gradient(135deg,#effff7,#fff2e8 52%,#f2edff);border:1px solid rgba(7,21,15,.08)}.about p{margin-top:22px;max-width:540px;font:600 26px/1.15 "Space Grotesk";letter-spacing:-1px}.about span{color:#0ba75d}.about .mini{margin-top:25px;display:flex;gap:7px;flex-wrap:wrap}.mini span{font:800 9px "DM Sans";padding:8px 9px;border-radius:9px;background:rgba(255,255,255,.7);color:#617068}
+
+/* CONTACT */
+.contact{padding:35px 22px 105px}.contact-box{max-width:var(--max);margin:auto;min-height:330px;border-radius:36px;padding:50px;display:flex;align-items:center;justify-content:space-between;gap:30px;color:#fff;position:relative;overflow:hidden;background:radial-gradient(circle at 80% 18%,rgba(255,217,79,.35),transparent 24%),radial-gradient(circle at 20% 90%,rgba(19,216,120,.3),transparent 28%),linear-gradient(120deg,#07150f,#153928 48%,#34204f);box-shadow:0 30px 80px rgba(7,21,15,.18)}
+.contact-box h2{font:700 clamp(42px,5vw,70px)/.92 "Space Grotesk";letter-spacing:-3px;position:relative}.contact-box p{color:#b8c9c0;font-size:13px;margin-top:16px;position:relative}.contact-box .btn{background:#fff;color:var(--dark);min-width:160px}.orb{position:absolute;right:12%;top:-105px;width:260px;height:260px;border-radius:50%;border:1px solid rgba(255,255,255,.14);box-shadow:0 0 0 35px rgba(255,255,255,.035),0 0 0 70px rgba(255,255,255,.02);animation:spin 22s linear infinite}@keyframes spin{to{transform:rotate(360deg)}}
+
+/* FOOTER */
+footer{padding:30px 22px 45px;background:var(--dark);color:#c5d0ca}.footer{max-width:var(--max);margin:auto;padding-top:24px;border-top:1px solid rgba(255,255,255,.09);display:flex;justify-content:space-between;align-items:center}.copy{margin-top:8px;font-size:10px;color:#819087}.social{display:flex;gap:7px}.social a{width:34px;height:34px;border-radius:10px;display:grid;place-items:center;background:rgba(255,255,255,.06);transition:.25s}.social a:hover{background:var(--green);color:var(--dark);transform:translateY(-3px)}
+.reveal{opacity:0;transform:translateY(30px);transition:.75s cubic-bezier(.2,.8,.2,1)}.reveal.show{opacity:1;transform:none}
+.cursor{position:fixed;z-index:9999;width:170px;height:170px;border-radius:50%;pointer-events:none;transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(19,216,120,.11),transparent 65%);mix-blend-mode:multiply}
+
+/* RESPONSIVE */
+@media(max-width:980px){
+  .hero-grid{grid-template-columns:1fr}.hero-visual{min-height:450px}.bottom-grid{grid-template-columns:1fr}
+  .card,.card:nth-child(3n+1),.card:nth-child(3n+2),.card:nth-child(3n){grid-column:span 6}
+}
+@media(max-width:760px){
+  .links,.cta{display:none}.menu{display:block}
+  .links.open{display:flex;position:absolute;left:18px;right:18px;top:74px;flex-direction:column;padding:9px;border-radius:18px;background:rgba(7,21,15,.95);color:#fff;backdrop-filter:blur(18px)}
+  .links.open a{padding:13px}.hero{padding:140px 16px 55px}.hero h1{letter-spacing:-4px}
+  .hero-visual{min-height:370px}.hero-main{width:84%;height:320px}.hero-side{width:48%;height:190px}
+  .portfolio,.bottom{padding-left:16px;padding-right:16px}.toolbar{align-items:stretch}.tools{width:100%}.search{flex:1}.search input{width:100%}
+  .card,.card:nth-child(3n+1),.card:nth-child(3n+2),.card:nth-child(3n){grid-column:span 12}
+  .contact{padding-left:16px;padding-right:16px}.contact-box{display:block;padding:38px 27px}.contact-box .btn{margin-top:25px}.footer{flex-direction:column;align-items:flex-start}
+}
+</style>
+</head>
+
+<body>
+<div class="bg"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
+<div class="noise"></div>
+<div class="cursor" id="cursor"></div>
+
+<!-- ==================== NAVBAR ==================== -->
+<header class="nav-wrap" id="navbar">
+<nav class="nav">
+  <a href="index.html" class="brand"><span class="mark"><i class="fa-solid fa-bolt"></i></span><span>Ajiz7onSite</span></a>
+  <div class="links" id="links">
+    <a href="index.html">Home</a>
+    <a href="portfolio.html" class="active">Portfolio</a>
+    <a href="about.html">About</a>
+    <a href="process.html">Process</a>
+  </div>
+  <a href="about.html#contact" class="cta">Let's Talk <i class="fa-solid fa-arrow-right"></i></a>
+  <button class="menu" id="menu" aria-label="Menu"><i class="fa-solid fa-bars"></i></button>
+</nav>
+</header>
+
+<!-- ==================== HERO ==================== -->
+<main>
+<section class="hero">
+  <div class="container hero-grid">
+    <div class="reveal">
+      <div class="kicker">Portfolio / Selected Work</div>
+      <h1>Real sites.<br><span class="gradient">Real feel.</span></h1>
+      <p class="hero-copy">Explore the actual websites. No mockups. No static shots. Just live work built by Ajiz7onSite.</p>
+      <div class="hero-stats">
+        <div class="stat"><strong>20</strong> Live Projects</div>
+        <div class="stat"><strong>100%</strong> Responsive</div>
+        <div class="stat"><strong>HTML</strong> CSS · JS</div>
+      </div>
+    </div>
+
+    <div class="hero-visual reveal">
+      <div class="hero-card hero-main">
+        <div class="browserbar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="address"></span></div>
+        <iframe src="https://ajiz7onsite.github.io/Macha/" title="Macha live portfolio preview"></iframe>
+        <a class="hit" href="https://ajiz7onsite.github.io/Macha/" target="_blank" rel="noopener"></a>
+        <span class="hero-label">Macha · Live</span>
+      </div>
+      <div class="hero-card hero-side">
+        <div class="browserbar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="address"></span></div>
+        <iframe src="https://ajiz7onsite.github.io/AyamGeprek/" title="Sate live portfolio preview"></iframe>
+        <a class="hit" href="https://ajiz7onsite.github.io/AyamGeprek/" target="_blank" rel="noopener"></a>
+        <span class="hero-label">Sate · Live</span>
+      </div>
+      <div class="float f1"><i class="fa-solid fa-wand-magic-sparkles"></i> Bold UI</div>
+      <div class="float f2"><i class="fa-solid fa-bolt"></i> Live</div>
+      <div class="float f3"><i class="fa-solid fa-mobile-screen-button"></i> Responsive</div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== PORTFOLIO GRID ==================== -->
+<section class="portfolio" id="work">
+<div class="container">
+  <div class="toolbar reveal">
+    <div class="filters" id="filters">
+      <button class="filter active" data-filter="all">All</button>
+      <button class="filter" data-filter="food">Food</button>
+      <button class="filter" data-filter="drink">Drinks</button>
+      <button class="filter" data-filter="street">Street</button>
+      <button class="filter" data-filter="rice">Rice</button>
+      <button class="filter" data-filter="noodle">Noodles</button>
+    </div>
+    <div class="tools">
+      <label class="search"><i class="fa-solid fa-magnifying-glass"></i><input id="search" type="search" placeholder="Search..."></label>
+    </div>
+  </div>
+
+  <div class="grid" id="grid">
+
+    <!-- PRODUCT 01 -->
+    <article class="card reveal" data-name="Macha" data-cat="drink">
+      <div class="preview"><div class="browserbar small"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="address"></span></div><iframe src="https://ajiz7onsite.github.io/Macha/" title="Macha live website" loading="lazy"></iframe><a class="hit" href="https://ajiz7onsite.github.io/Macha/" target="_blank" rel="noopener"></a><div class="hover"><span>Open Live Preview <i class="fa-solid fa-arrow-up-right-from-square"></i></span></div><span class="badge">01 · Drink</span></div>
+      <div class="body"><div class="meta"><span>Tea / Cafe</span><span>Fresh UI</span></div><h2>Macha</h2><p>Clean matcha-inspired web concept.</p><div class="foot"><div class="chips"><span class="chip">Responsive</span><span class="chip">Motion</span></div><a class="open" href="https://ajiz7onsite.github.io/Macha/" target="_blank" rel="noopener">Open <i class="fa-solid fa-arrow-up-right-from-square"></i></a></div></div>
+    </article>
+
+    <!-- PRODUCT 02 -->
+    <article class="card reveal" data-name="Tahu Gejrot" data-cat="food street">
+      <div class="preview"><div class="browserbar small"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="address"></span></div><iframe src="https://ajiz7onsite.github.io/tahuGejrot/" title="Tahu Gejrot live website" loading="lazy"></iframe><a class="hit" href="https://ajiz7onsite.github.io/tahuGejrot/" target="_blank" rel="noopener"></a><div class="hover"><span>Open Live Preview <i class="fa-solid fa-arrow-up-right-from-square"></i></span></div><span class="badge">02 · Street</span></div>
+      <div class="body"><div class="meta"><span>Indonesian</span><span>Bold</span></div><h2>Tahu Gejrot</h2><p>Playful street-food direction.</p><div class="foot"><div class="chips"><span class="chip">HTML</span><span class="chip">CSS</span></div><a class="open" href="https://ajiz7onsite.github.io/tahuGejrot/" target="_blank" rel="noopener">Open <i class="fa-solid fa-arrow-up-right-from-square"></i></a></div></div>
+    </article>
+
+    <!-- PRODUCT 03 -->
+    <article class="card reveal" data-name="Seblak" data-cat="food street noodle">
+      <div class="preview"><div class="browserbar small"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="address"></span></div><iframe src="https://ajiz7onsite.github.io/Seblak/" title="Seblak live website" loading="lazy"></iframe><a class="hit" href="https://ajiz7onsite.github.io/Seblak/" target="_blank" rel="noopener"></a><div class="hover"><span>Open Live Preview <i class="fa-solid fa-arrow-up-right-from-square"></i></span></div><span class="badge">03 · Street</span></div>
+      <div class="body"><div class="meta"><span>Spicy</span><span>Vibrant</span></div><h2>Seblak</h2><p>Energetic layout for spicy brands.</p><div class="foot"><div class="chips"><span class="chip">Responsive</span><span class="chip">Animated</span></div><a class="open" href="https://ajiz7onsite.github.io/Seblak/" target="_blank" rel="noopener">Open <i class="fa-solid fa-arrow-up-right-from-square"></i></a></div></div>
+    </article>
+
+    <!-- PRODUCT 04 -->
+    <article class="card reveal" data-name="Thai Tea" data-cat="drink">
+      <div class="preview"><div class="browserbar small"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="address"></span></div><iframe src="https://ajiz7onsite.github.io/thaiTea/" title="Thai Tea live website" loading="lazy"></iframe><a class="hit" href="https://ajiz7onsite.github.io/thaiTea/" target="_blank" rel="noopener"></a><div class="hover"><span>Open Live Preview <i class="fa-solid fa-arrow-up-right-from-square"></i></span></div><span class="badge">04 · Drink</span></div>
+      <div class="body"><div class="meta"><span>Tea</span><span>Warm</span></div><h2>Thai Tea</h2><p>Warm gradient tea-shop concept.</p><div class="foot"><div class="chips"><span class="chip">Landing</span><span class="chip">Motion</span></div><a class="open" href="https://ajiz7onsite.github.io/thaiTea/" target="_blank" rel="noopener">Open <i class="fa-solid fa-arrow-up-right-from-square"></i></a></div></div>
+    </article>
+
+    <!-- PRODUCT 05 -->
+    <article class="card reveal" data-name="Batagor" data-cat="food street">
+      <div class="preview"><div class="browserbar small"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="address"></span></div><iframe src="https://ajiz7onsite.github.io/Batagor/" title="Batagor live website" loading="lazy"></iframe><a class="hit" href="https://ajiz7onsite.github.io/Batagor/" target="_blank" rel="noopener"></a><div class="hover"><span>Open Live Preview <i class="fa-solid fa-arrow-up-right-from-square"></i></span></div><span class="badge">05 · Street</span></div>
+      <div class="body"><div class="meta"><span>Snack</span><span>Colorful</span></div><h2>Batagor</h2><p>Bright street-food presentation.</p><div class="foot"><div class="chips"><span class="chip">HTML</span><span class="chip">JS</span></div><a class="open" href="https://ajiz7onsite.github.io/Batagor/" target="_blank" rel="noopener">Open <i class="fa-solid fa-arrow-up-right-from-square"></i></a></div></div>
+    </article>
+
+    <!-- PRODUCT 06 -->
+    <article class="card reveal" data-name="Pecel Lele" data-cat="food">
+      <div class="preview"><div class="browserbar small"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="address"></span></div><iframe src="https://ajiz7onsite.github.io/pecelLele/" title="Pecel Lele live website" loading="lazy"></iframe><a class="hit" href="https://ajiz7onsite.github.io/pecelLele/" target="_blank" rel="noopener"></a><div class="hover"><span>Open Live Preview <i class="fa-solid fa-arrow-up-right-from-square"></i></span></div><span class="badge">06 · Food</span></div>
+      <div class="body"><div class="meta"><span>Indonesian</span><span>Casual</span></div><h2>Pecel Lele</h2><p>Friendly local-food storefront.</p><div class="foot"><div class="chips"><span class="chip">Responsive</span><span class="chip">Clean</span></div><a class="open" href="https://ajiz7onsite.github.io/pecelLele/" target="_blank" rel="noopener">Open <i class="fa-solid fa-arrow-up-right-from-square"></i></a></div></div>
+    </article>
+
+    <!-- PRODUCT 07 -->
+    <article class="card reveal" data-name="Dimsum" data-cat="food street">
+      <div class="preview"><div class="browserbar small"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="address"></span></div><iframe src="https://ajiz7onsite.github.io/Dimsum/" title="Dimsum live website" loading="lazy"></iframe><a class="hit" href="https://ajiz7onsite.github.io/Dimsum/" target="_blank" rel="noopener"></a><div class="hover"><span>Open Live Preview <i class="fa-solid fa-arrow-up-right-from-square"></i></span></div><span class="badge">07 · Food</span></div>
+      <div class="body"><div class="meta"><span>Snack</span><span>Modern</span></div><h2>Dimsum</h2><p>Compact, playful food layout.</p><div class="foot"><div class="chips"><span class="chip">Responsive</span><span class="chip">UI</span></div><a class="open" href="https://ajiz7onsite.github.io/Dimsum/" target="_blank" rel="noopener">Open <i class="fa-solid fa-arrow-up-right-from-square"></i></a></div></div>
+    </article>
+
+    <!-- PRODUCT 08 -->
+    <article class="card reveal" data-name="Martabak" data-cat="food street">
+      <div class="preview"><div class="browserbar small"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="address"></span></div><iframe src="https://ajiz7onsite.github.io/Martabak/" title="Martabak live website" loading="lazy"></iframe><a class="hit" href="https://ajiz7onsite.github.io/Martabak/" target="_blank" rel="noopener"></a><div class="hover"><span>Open Live Preview <i class="fa-solid fa-arrow-up-right-from-square"></i></span></div><span class="badge">08 · Food</span></div>
+      <div class="body"><div class="meta"><span>Sweet</span><span>Yellow</span></div><h2>Martabak</h2><p>Bright dessert storefront concept.</p><div class="foot"><div class="chips"><span class="chip">Landing</span><span class="chip">Motion</span></div><a class="open" href="https://ajiz7onsite.github.io/Martabak/" target="_blank" rel="noopener">Open <i class="fa-solid fa-arrow-up-right-from-square"></i></a></div></div>
+    </article>
+
+    <!-- PRODUCT 09 -->
+    <article class="card reveal" data-name="Es Teh Manis" data-cat="drink">
+      <div class="preview"><div class="browserbar small"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="address"></span></div><iframe src="https://ajiz7onsite.github.io/esTehManis/" title="Es Teh Manis live website" loading="lazy"></iframe><a class="hit" href="https://ajiz7onsite.github.io/esTehManis/" target="_blank" rel="noopener"></a><div class="hover"><span>Open Live Preview <i class="fa-solid fa-arrow-up-right-from-square"></i></span></div><span class="badge">09 · Drink</span></div>
+      <div class="body"><div class="meta"><span>Tea</span><span>Fresh</span></div><h2>Es Teh Manis</h2><p>Fresh tea-brand direction.</p><div class="foot"><div class="chips"><span class="chip">HTML</span><span class="chip">CSS</span></div><a class="open" href="https://ajiz7onsite.github.io/esTehManis/" target="_blank" rel="noopener">Open <i class="fa-solid fa-arrow-up-right-from-square"></i></a></div></div>
+    </article>
+
+    <!-- PRODUCT 10 -->
+    <article class="card reveal" data-name="Kebab" data-cat="food street">
+      <div class="preview"><div class="browserbar small"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="address"></span></div><iframe src="https://ajiz7onsite.github.io/Kebab/" title="Kebab live website" loading="lazy"></iframe><a class="hit" href="https://ajiz7onsite.github.io/Kebab/" target="_blank" rel="noopener"></a><div class="hover"><span>Open Live Preview <i class="fa-solid fa-arrow-up-right-from-square"></i></span></div><span class="badge">10 · Street</span></div>
+      <div class="body"><div class="meta"><span>Fast Food</span><span>Premium</span></div><h2>Kebab</h2><p>Dark, bold street-food style.</p><div class="foot"><div class="chips"><span class="chip">Responsive</span><span class="chip">Bold</span></div><a class="open" href="https://ajiz7onsite.github.io/Kebab/" target="_blank" rel="noopener">Open <i class="fa-solid fa-arrow-up-right-from-square"></i></a></div></div>
+    </article>
+
+    <!-- PRODUCT 11 -->
+    <article class="card reveal" data-name="Nasi Padang" data-cat="food rice">
+      <div class="preview"><div class="browserbar small"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="address"></span></div><iframe src="https://ajiz7onsite.github.io/nasiPadang/" title="Nasi Padang live website" loading="lazy"></iframe><a class="hit" href="https://ajiz7onsite.github.io/nasiPadang/" target="_blank" rel="noopener"></a><div class="hover"><span>Open Live Preview <i class="fa-solid fa-arrow-up-right-from-square"></i></span></div><span class="badge">11 · Rice</span></div>
+      <div class="body"><div class="meta"><span>Indonesian</span><span>Premium</span></div><h2>Nasi Padang</h2><p>Rich, warm food identity.</p><div class="foot"><div class="chips"><span class="chip">Responsive</span><span class="chip">Motion</span></div><a class="open" href="https://ajiz7onsite.github.io/nasiPadang/" target="_blank" rel="noopener">Open <i class="fa-solid fa-arrow-up-right-from-square"></i></a></div></div>
+    </article>
+
+    <!-- PRODUCT 12 -->
+    <article class="card reveal" data-name="Chicken Wings" data-cat="food street">
+      <div class="preview"><div class="browserbar small"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="address"></span></div><iframe src="https://ajiz7onsite.github.io/chikenWings/" title="Chicken Wings live website" loading="lazy"></iframe><a class="hit" href="https://ajiz7onsite.github.io/chikenWings/" target="_blank" rel="noopener"></a><div class="hover"><span>Open Live Preview <i class="fa-solid fa-arrow-up-right-from-square"></i></span></div><span class="badge">12 · Food</span></div>
+      <div class="body"><div class="meta"><span>Wings</span><span>Dark</span></div><h2>Chicken Wings</h2><p>Street-premium visual direction.</p><div class="foot"><div class="chips"><span class="chip">Dark UI</span><span class="chip">Motion</span></div><a class="open" href="https://ajiz7onsite.github.io/chikenWings/" target="_blank" rel="noopener">Open <i class="fa-solid fa-arrow-up-right-from-square"></i></a></div></div>
+    </article>
+
+    <!-- PRODUCT 13 -->
+    <article class="card reveal" data-name="Nasi Goreng" data-cat="food rice">
+      <div class="preview"><div class="browserbar small"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="address"></span></div><iframe src="https://ajiz7onsite.github.io/nasiGoreng/" title="Nasi Goreng live website" loading="lazy"></iframe><a class="hit" href="https://ajiz7onsite.github.io/nasiGoreng/" target="_blank" rel="noopener"></a><div class="hover"><span>Open Live Preview <i class="fa-solid fa-arrow-up-right-from-square"></i></span></div><span class="badge">13 · Rice</span></div>
+      <div class="body"><div class="meta"><span>Indonesian</span><span>Bold</span></div><h2>Nasi Goreng</h2><p>High-energy rice-food concept.</p><div class="foot"><div class="chips"><span class="chip">HTML</span><span class="chip">JS</span></div><a class="open" href="https://ajiz7onsite.github.io/nasiGoreng/" target="_blank" rel="noopener">Open <i class="fa-solid fa-arrow-up-right-from-square"></i></a></div></div>
+    </article>
+
+    <!-- PRODUCT 14 -->
+    <article class="card reveal" data-name="Sate" data-cat="food street">
+      <div class="preview"><div class="browserbar small"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="address"></span></div><iframe src="https://ajiz7onsite.github.io/sate/" title="Sate live website" loading="lazy"></iframe><a class="hit" href="https://ajiz7onsite.github.io/sate/" target="_blank" rel="noopener"></a><div class="hover"><span>Open Live Preview <i class="fa-solid fa-arrow-up-right-from-square"></i></span></div><span class="badge">14 · Street</span></div>
+      <div class="body"><div class="meta"><span>Grill</span><span>Premium</span></div><h2>Sate</h2><p>Dark street-premium direction.</p><div class="foot"><div class="chips"><span class="chip">Premium</span><span class="chip">Motion</span></div><a class="open" href="https://ajiz7onsite.github.io/sate/" target="_blank" rel="noopener">Open <i class="fa-solid fa-arrow-up-right-from-square"></i></a></div></div>
+    </article>
+
+    <!-- PRODUCT 15 -->
+    <article class="card reveal" data-name="Mie Ayam" data-cat="food noodle">
+      <div class="preview"><div class="browserbar small"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="address"></span></div><iframe src="https://ajiz7onsite.github.io/mieAyam/" title="Mie Ayam live website" loading="lazy"></iframe><a class="hit" href="https://ajiz7onsite.github.io/mieAyam/" target="_blank" rel="noopener"></a><div class="hover"><span>Open Live Preview <i class="fa-solid fa-arrow-up-right-from-square"></i></span></div><span class="badge">15 · Noodles</span></div>
+      <div class="body"><div class="meta"><span>Noodles</span><span>Golden</span></div><h2>Mie Ayam</h2><p>Warm golden street-food look.</p><div class="foot"><div class="chips"><span class="chip">Responsive</span><span class="chip">Animated</span></div><a class="open" href="https://ajiz7onsite.github.io/mieAyam/" target="_blank" rel="noopener">Open <i class="fa-solid fa-arrow-up-right-from-square"></i></a></div></div>
+    </article>
+
+    <!-- PRODUCT 16 -->
+    <article class="card reveal" data-name="Bakso" data-cat="food noodle">
+      <div class="preview"><div class="browserbar small"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="address"></span></div><iframe src="https://ajiz7onsite.github.io/Bakso/" title="Bakso live website" loading="lazy"></iframe><a class="hit" href="https://ajiz7onsite.github.io/Bakso/" target="_blank" rel="noopener"></a><div class="hover"><span>Open Live Preview <i class="fa-solid fa-arrow-up-right-from-square"></i></span></div><span class="badge">16 · Food</span></div>
+      <div class="body"><div class="meta"><span>Soup</span><span>Minimal</span></div><h2>Bakso</h2><p>Clean black-white food identity.</p><div class="foot"><div class="chips"><span class="chip">Minimal</span><span class="chip">UI</span></div><a class="open" href="https://ajiz7onsite.github.io/Bakso/" target="_blank" rel="noopener">Open <i class="fa-solid fa-arrow-up-right-from-square"></i></a></div></div>
+    </article>
+
+    <!-- PRODUCT 17 -->
+    <article class="card reveal" data-name="Boba" data-cat="drink">
+      <div class="preview"><div class="browserbar small"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="address"></span></div><iframe src="https://ajiz7onsite.github.io/Boba/" title="Boba live website" loading="lazy"></iframe><a class="hit" href="https://ajiz7onsite.github.io/Boba/" target="_blank" rel="noopener"></a><div class="hover"><span>Open Live Preview <i class="fa-solid fa-arrow-up-right-from-square"></i></span></div><span class="badge">17 · Drink</span></div>
+      <div class="body"><div class="meta"><span>Milk Tea</span><span>Caramel</span></div><h2>Boba</h2><p>Playful milk-tea storefront.</p><div class="foot"><div class="chips"><span class="chip">Motion</span><span class="chip">Responsive</span></div><a class="open" href="https://ajiz7onsite.github.io/Boba/" target="_blank" rel="noopener">Open <i class="fa-solid fa-arrow-up-right-from-square"></i></a></div></div>
+    </article>
+
+    <!-- PRODUCT 18 -->
+    <article class="card reveal" data-name="Warmindo" data-cat="food noodle street">
+      <div class="preview"><div class="browserbar small"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="address"></span></div><iframe src="https://ajiz7onsite.github.io/Warmindo/" title="Warmindo live website" loading="lazy"></iframe><a class="hit" href="https://ajiz7onsite.github.io/Warmindo/" target="_blank" rel="noopener"></a><div class="hover"><span>Open Live Preview <i class="fa-solid fa-arrow-up-right-from-square"></i></span></div><span class="badge">18 · Noodles</span></div>
+      <div class="body"><div class="meta"><span>Indomie</span><span>Street</span></div><h2>Warmindo</h2><p>Casual late-night food concept.</p><div class="foot"><div class="chips"><span class="chip">HTML</span><span class="chip">CSS</span></div><a class="open" href="https://ajiz7onsite.github.io/Warmindo/" target="_blank" rel="noopener">Open <i class="fa-solid fa-arrow-up-right-from-square"></i></a></div></div>
+    </article>
+
+    <!-- PRODUCT 19 -->
+    <article class="card reveal" data-name="Ayam Taliwang" data-cat="food">
+      <div class="preview"><div class="browserbar small"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="address"></span></div><iframe src="https://ajiz7onsite.github.io/AyamTaliwang/" title="Ayam Taliwang live website" loading="lazy"></iframe><a class="hit" href="https://ajiz7onsite.github.io/AyamTaliwang/" target="_blank" rel="noopener"></a><div class="hover"><span>Open Live Preview <i class="fa-solid fa-arrow-up-right-from-square"></i></span></div><span class="badge">19 · Food</span></div>
+      <div class="body"><div class="meta"><span>Grill</span><span>Green</span></div><h2>Ayam Taliwang</h2><p>Fresh Indonesian food identity.</p><div class="foot"><div class="chips"><span class="chip">Responsive</span><span class="chip">Motion</span></div><a class="open" href="https://ajiz7onsite.github.io/AyamTaliwang/" target="_blank" rel="noopener">Open <i class="fa-solid fa-arrow-up-right-from-square"></i></a></div></div>
+    </article>
+
+    <!-- PRODUCT 20 -->
+    <article class="card reveal" data-name="Ayam Geprek" data-cat="food street">
+      <div class="preview"><div class="browserbar small"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="address"></span></div><iframe src="https://ajiz7onsite.github.io/AyamGeprek/" title="Ayam Geprek live website" loading="lazy"></iframe><a class="hit" href="https://ajiz7onsite.github.io/AyamGeprek/" target="_blank" rel="noopener"></a><div class="hover"><span>Open Live Preview <i class="fa-solid fa-arrow-up-right-from-square"></i></span></div><span class="badge">20 · Food</span></div>
+      <div class="body"><div class="meta"><span>Spicy</span><span>Red</span></div><h2>Ayam Geprek</h2><p>Bold spicy-food visual system.</p><div class="foot"><div class="chips"><span class="chip">Responsive</span><span class="chip">Animated</span></div><a class="open" href="https://ajiz7onsite.github.io/AyamGeprek/" target="_blank" rel="noopener">Open <i class="fa-solid fa-arrow-up-right-from-square"></i></a></div></div>
+    </article>
+
+    <div class="empty" id="empty"><i class="fa-solid fa-magnifying-glass" style="font-size:23px;margin-bottom:10px"></i><p>No work found.</p></div>
+  </div>
+</div>
+</section>
+
+<!-- ==================== PROCESS + ABOUT SNAPSHOT ==================== -->
+<section class="bottom">
+<div class="container bottom-grid">
+  <div class="process reveal">
+    <div class="kicker">How I Build</div>
+    <h2>From idea<br>to live.</h2>
+    <div class="steps">
+      <div class="step"><span class="num">01</span><div><h3>Concept</h3><p>Direction, mood and structure.</p></div></div>
+      <div class="step"><span class="num">02</span><div><h3>Design</h3><p>Color, type and interaction.</p></div></div>
+      <div class="step"><span class="num">03</span><div><h3>Build</h3><p>Responsive HTML, CSS and JS.</p></div></div>
+      <div class="step"><span class="num">04</span><div><h3>Polish</h3><p>Motion, details and final checks.</p></div></div>
+    </div>
+  </div>
+
+  <div class="about reveal">
+    <div class="kicker">Ajiz7onSite</div>
+    <h2>Design with flavor.</h2>
+    <p>Modern <span>food web templates</span> with strong visuals, responsive layouts and lively interactions.</p>
+    <div class="mini"><span>Web Templates</span><span>Food UI</span><span>Motion</span><span>Responsive</span></div>
+  </div>
+</div>
+</section>
+
+<!-- ==================== CONTACT ==================== -->
+<section class="contact" id="contact">
+<div class="contact-box reveal">
+  <div class="orb"></div>
+  <div><div class="kicker" style="color:#80ffbc">Let's Talk</div><h2>Give your brand<br>a <span style="color:#80ffbc">better web.</span></h2><p>Portfolio. Templates. Web design.</p></div>
+  <a class="btn" href="mailto:hello@ajiz7onsite.com">Start a conversation <i class="fa-solid fa-arrow-right"></i></a>
+</div>
+</section>
+</main>
+
+<!-- ==================== FOOTER ==================== -->
+<footer>
+<div class="footer">
+  <div><div class="brand" style="color:#fff"><span class="mark"><i class="fa-solid fa-bolt"></i></span><span>Ajiz7onSite</span></div><div class="copy">© 2026 Ajiz7onSite. All rights reserved.</div></div>
+  <div class="social"><a href="https://github.com/Ajiz7onSite" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i></a><a href="index.html"><i class="fa-solid fa-house"></i></a><a href="#contact"><i class="fa-regular fa-envelope"></i></a></div>
+</div>
+</footer>
+
+<script>
+/* NAV */
+const nav=document.getElementById("navbar"),links=document.getElementById("links"),menu=document.getElementById("menu");
+addEventListener("scroll",()=>nav.classList.toggle("scrolled",scrollY>35));
+menu.addEventListener("click",()=>{links.classList.toggle("open");menu.innerHTML=links.classList.contains("open")?'<i class="fa-solid fa-xmark"></i>':'<i class="fa-solid fa-bars"></i>'});
+links.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>{links.classList.remove("open");menu.innerHTML='<i class="fa-solid fa-bars"></i>'}));
+
+/* REVEAL */
+const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("show");obs.unobserve(e.target)}}),{threshold:.08});
+document.querySelectorAll(".reveal").forEach(x=>obs.observe(x));
+
+/* CURSOR */
+const cursor=document.getElementById("cursor");
+if(matchMedia("(pointer:fine)").matches)addEventListener("mousemove",e=>{cursor.style.left=e.clientX+"px";cursor.style.top=e.clientY+"px"});else cursor.style.display="none";
+
+/* LIVE PREVIEW SCALE */
+function fitPreviews(){
+  document.querySelectorAll(".preview iframe").forEach(frame=>{
+    const box=frame.parentElement;
+    const scale=Math.max(.43,Math.min(.62,box.clientWidth/760));
+    frame.style.width=(100/scale)+"%";
+    frame.style.height=(100/scale)+"%";
+    frame.style.transform="scale("+scale+")";
+  });
+}
+addEventListener("load",fitPreviews);addEventListener("resize",fitPreviews);
+
+/* FILTER + SEARCH */
+const cards=[...document.querySelectorAll(".card")],filters=[...document.querySelectorAll(".filter")],search=document.getElementById("search"),empty=document.getElementById("empty");
+let active="all";
+function render(){
+  const q=search.value.toLowerCase().trim();
+  cards.forEach(card=>{
+    const name=card.dataset.name.toLowerCase(),cat=card.dataset.cat;
+    const ok=(active==="all"||cat.includes(active))&&(!q||name.includes(q)||cat.includes(q));
+    card.classList.toggle("hide",!ok);
+  });
+  empty.style.display=cards.some(c=>!c.classList.contains("hide"))?"none":"block";
+  fitPreviews();
+}
+filters.forEach(f=>f.addEventListener("click",()=>{filters.forEach(x=>x.classList.remove("active"));f.classList.add("active");active=f.dataset.filter;render()}));
+search.addEventListener("input",render);
+
+/* HERO PARALLAX */
+const hv=document.querySelector(".hero-visual");
+if(matchMedia("(pointer:fine)").matches){
+  hv.addEventListener("mousemove",e=>{
+    const r=hv.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;
+    document.querySelectorAll(".hero-card").forEach((c,i)=>c.style.transform=`rotateY(${x*(i?9:5)}deg) rotateX(${y*-6}deg) translateZ(${i*10}px)`);
+  });
+  hv.addEventListener("mouseleave",()=>document.querySelectorAll(".hero-card").forEach(c=>c.style.transform=""));
+}
+</script>
+</body>
+</html>

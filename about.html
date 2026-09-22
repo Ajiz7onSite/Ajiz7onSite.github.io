@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="About Ajiz7onSite — a collection of live food and restaurant website templates built for modern digital brands.">
+  <title>About — Ajiz7onSite</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+  <style>
+    :root{
+      --green:#13c86b;
+      --green-dark:#073b2a;
+      --orange:#ff8a00;
+      --purple:#7b4dff;
+      --ink:#10231d;
+      --muted:#65736d;
+      --cream:#f7faf6;
+      --white:#fff;
+      --line:rgba(16,35,29,.09);
+      --shadow:0 24px 70px rgba(18,44,33,.13);
+      --radius:28px;
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{
+      font-family:"DM Sans",sans-serif;
+      color:var(--ink);
+      background:
+        radial-gradient(circle at 8% 12%,rgba(19,200,107,.16),transparent 25%),
+        radial-gradient(circle at 88% 8%,rgba(255,138,0,.14),transparent 23%),
+        radial-gradient(circle at 78% 72%,rgba(123,77,255,.12),transparent 26%),
+        var(--cream);
+      overflow-x:hidden;
+    }
+    a{text-decoration:none;color:inherit}
+    button,input{font:inherit}
+    .container{width:min(1180px,92%);margin:auto}
+
+    /* Ambient background */
+    .ambient{
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      z-index:-1;
+      overflow:hidden;
+    }
+    .blob{
+      position:absolute;
+      border-radius:50%;
+      filter:blur(3px);
+      opacity:.34;
+      animation:floatBlob 13s ease-in-out infinite alternate;
+    }
+    .blob.one{width:360px;height:360px;background:#6ff0ae;left:-150px;top:22%}
+    .blob.two{width:300px;height:300px;background:#ffc56f;right:-100px;top:38%;animation-delay:-4s}
+    .blob.three{width:280px;height:280px;background:#b7a0ff;left:38%;bottom:-150px;animation-delay:-8s}
+    @keyframes floatBlob{
+      from{transform:translate3d(0,0,0) scale(1)}
+      to{transform:translate3d(45px,-35px,0) scale(1.12)}
+    }
+
+    /* Navbar */
+    header{
+      position:fixed;
+      top:0;left:0;right:0;
+      z-index:1000;
+      padding:18px 0;
+      transition:.35s ease;
+    }
+    header.scrolled{
+      padding:10px 0;
+      background:rgba(6,34,25,.88);
+      backdrop-filter:blur(18px);
+      box-shadow:0 12px 35px rgba(0,0,0,.12);
+    }
+    .nav{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:24px;
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      color:var(--ink);
+      font-family:"Space Grotesk",sans-serif;
+      font-weight:700;
+      font-size:1.08rem;
+      letter-spacing:-.03em;
+    }
+    header.scrolled .brand{color:#fff}
+    .brand-mark{
+      width:38px;height:38px;
+      border-radius:12px;
+      display:grid;place-items:center;
+      color:#fff;
+      background:linear-gradient(135deg,var(--green),var(--orange));
+      box-shadow:0 8px 25px rgba(19,200,107,.28);
+      transform:rotate(-7deg);
+    }
+    .nav-links{display:flex;align-items:center;gap:7px}
+    .nav-links a{
+      padding:10px 14px;
+      border-radius:12px;
+      color:#31423c;
+      font-size:.92rem;
+      font-weight:600;
+      transition:.25s;
+    }
+    header.scrolled .nav-links a{color:rgba(255,255,255,.76)}
+    .nav-links a:hover,.nav-links a.active{
+      color:var(--ink);
+      background:rgba(255,255,255,.72);
+    }
+    header.scrolled .nav-links a:hover,
+    header.scrolled .nav-links a.active{
+      color:#fff;
+      background:rgba(255,255,255,.1);
+    }
+    .nav-cta{
+      padding:11px 17px;
+      border-radius:14px;
+      background:var(--ink);
+      color:#fff!important;
+      box-shadow:0 10px 25px rgba(16,35,29,.16);
+    }
+    header.scrolled .nav-cta{background:var(--green);color:#062719!important}
+    .menu-toggle{
+      display:none;
+      width:44px;height:44px;
+      border:0;border-radius:13px;
+      background:rgba(255,255,255,.7);
+      color:var(--ink);
+      cursor:pointer;
+    }
+
+    /* Hero */
+    .hero{
+      min-height:94vh;
+      padding:155px 0 90px;
+      display:grid;
+      align-items:center;
+    }
+    .hero-grid{
+      display:grid;
+      grid-template-columns:1.02fr .98fr;
+      gap:65px;
+      align-items:center;
+    }
+    .eyebrow{
+      display:inline-flex;
+      align-items:center;
+      gap:9px;
+      padding:8px 12px;
+      border:1px solid rgba(19,200,107,.2);
+      background:rgba(255,255,255,.65);
+      border-radius:999px;
+      color:var(--green-dark);
+      font-weight:700;
+      font-size:.8rem;
+      margin-bottom:20px;
+      box-shadow:0 8px 25px rgba(18,44,33,.05);
+    }
+    .eyebrow i{color:var(--green)}
+    h1,h2,h3{font-family:"Space Grotesk",sans-serif;letter-spacing:-.055em}
+    h1{
+      font-size:clamp(3.2rem,7vw,6.7rem);
+      line-height:.91;
+      max-width:760px;
+    }
+    .gradient-text{
+      background:linear-gradient(100deg,var(--green),#00a86b 42%,var(--orange) 78%,var(--purple));
+      -webkit-background-clip:text;
+      background-clip:text;
+      color:transparent;
+    }
+    .hero-copy{
+      margin-top:25px;
+      max-width:590px;
+      font-size:1.08rem;
+      line-height:1.7;
+      color:var(--muted);
+    }
+    .hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:9px;
+      border:0;
+      cursor:pointer;
+      padding:14px 19px;
+      border-radius:15px;
+      font-weight:700;
+      transition:.3s;
+    }
+    .btn-primary{
+      color:#062719;
+      background:var(--green);
+      box-shadow:0 13px 30px rgba(19,200,107,.22);
+    }
+    .btn-primary:hover{transform:translateY(-4px);box-shadow:0 18px 36px rgba(19,200,107,.3)}
+    .btn-light{background:#fff;border:1px solid var(--line)}
+    .btn-light:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+
+    /* Orbit visual */
+    .orbit-wrap{
+      position:relative;
+      min-height:560px;
+      display:grid;
+      place-items:center;
+    }
+    .orbit{
+      width:min(480px,90vw);
+      aspect-ratio:1;
+      position:relative;
+      border-radius:50%;
+      border:1px dashed rgba(19,200,107,.34);
+      animation:spin 28s linear infinite;
+    }
+    .orbit::before,.orbit::after{
+      content:"";
+      position:absolute;
+      border-radius:50%;
+      border:1px dashed rgba(123,77,255,.2);
+      inset:42px;
+    }
+    .orbit::after{inset:90px;border-color:rgba(255,138,0,.2)}
+    @keyframes spin{to{transform:rotate(360deg)}}
+    .center-card{
+      position:absolute;
+      inset:50% auto auto 50%;
+      transform:translate(-50%,-50%);
+      width:245px;
+      height:245px;
+      border-radius:42px;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      color:#fff;
+      background:
+        linear-gradient(145deg,rgba(6,59,42,.98),rgba(12,91,59,.96));
+      box-shadow:0 30px 70px rgba(6,59,42,.25);
+      z-index:4;
+      animation:pulseCard 4s ease-in-out infinite;
+    }
+    .center-card .logo{
+      width:68px;height:68px;
+      border-radius:22px;
+      display:grid;place-items:center;
+      background:linear-gradient(135deg,var(--green),var(--orange));
+      font-size:1.55rem;
+      margin-bottom:15px;
+      transform:rotate(-7deg);
+    }
+    .center-card strong{font:700 1.65rem "Space Grotesk",sans-serif}
+    .center-card span{font-size:.84rem;color:rgba(255,255,255,.68);margin-top:5px}
+    @keyframes pulseCard{
+      0%,100%{transform:translate(-50%,-50%) scale(1)}
+      50%{transform:translate(-50%,-50%) scale(1.035)}
+    }
+    .orbit-item{
+      position:absolute;
+      width:92px;height:92px;
+      border-radius:27px;
+      display:grid;place-items:center;
+      background:rgba(255,255,255,.88);
+      border:1px solid rgba(255,255,255,.9);
+      box-shadow:0 18px 42px rgba(18,44,33,.13);
+      color:var(--green-dark);
+      font-size:1.45rem;
+      animation:counterSpin 28s linear infinite;
+    }
+    @keyframes counterSpin{to{transform:rotate(-360deg)}}
+    .orbit-item small{
+      position:absolute;
+      bottom:-25px;
+      font-size:.68rem;
+      font-weight:700;
+      color:var(--muted);
+      white-space:nowrap;
+    }
+    .item1{top:0;left:50%;transform:translateX(-50%)}
+    .item2{right:5%;top:50%;transform:translateY(-50%)}
+    .item3{bottom:0;left:50%;transform:translateX(-50%)}
+    .item4{left:5%;top:50%;transform:translateY(-50%)}
+    .item5{top:17%;right:17%}
+    .item6{bottom:17%;left:17%}
+
+    /* Ticker */
+    .ticker{
+      overflow:hidden;
+      border-block:1px solid var(--line);
+      background:rgba(255,255,255,.58);
+      padding:15px 0;
+    }
+    .ticker-track{
+      display:flex;
+      width:max-content;
+      animation:marquee 25s linear infinite;
+    }
+    .ticker-item{
+      display:flex;
+      align-items:center;
+      gap:28px;
+      padding-right:28px;
+      font-family:"Space Grotesk",sans-serif;
+      font-weight:700;
+      text-transform:uppercase;
+      font-size:.82rem;
+      letter-spacing:.08em;
+      color:#43524c;
+    }
+    .ticker-item i{color:var(--orange)}
+    @keyframes marquee{to{transform:translateX(-50%)}}
+
+    /* Sections */
+    section{padding:110px 0}
+    .section-head{
+      display:flex;
+      justify-content:space-between;
+      align-items:end;
+      gap:30px;
+      margin-bottom:42px;
+    }
+    .kicker{
+      color:var(--green);
+      font-weight:800;
+      font-size:.78rem;
+      text-transform:uppercase;
+      letter-spacing:.14em;
+      margin-bottom:12px;
+    }
+    .section-head h2{font-size:clamp(2.2rem,5vw,4rem);line-height:.98}
+    .section-head p{max-width:450px;color:var(--muted);line-height:1.7}
+
+    /* Philosophy cards */
+    .philosophy{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:18px;
+    }
+    .feature{
+      position:relative;
+      padding:30px;
+      min-height:270px;
+      border:1px solid rgba(255,255,255,.9);
+      border-radius:var(--radius);
+      background:rgba(255,255,255,.72);
+      box-shadow:0 18px 55px rgba(18,44,33,.08);
+      overflow:hidden;
+      transition:.35s;
+    }
+    .feature:hover{transform:translateY(-10px);box-shadow:var(--shadow)}
+    .feature::after{
+      content:"";
+      position:absolute;
+      width:130px;height:130px;
+      border-radius:50%;
+      right:-45px;bottom:-50px;
+      background:linear-gradient(135deg,rgba(19,200,107,.16),rgba(123,77,255,.12));
+    }
+    .feature-icon{
+      width:56px;height:56px;
+      border-radius:17px;
+      display:grid;place-items:center;
+      background:var(--green);
+      color:#063723;
+      font-size:1.25rem;
+      margin-bottom:28px;
+      transition:.4s;
+    }
+    .feature:nth-child(2) .feature-icon{background:#ffd08b}
+    .feature:nth-child(3) .feature-icon{background:#c8b8ff}
+    .feature:hover .feature-icon{transform:rotate(8deg) scale(1.1)}
+    .feature h3{font-size:1.45rem;margin-bottom:10px}
+    .feature p{color:var(--muted);line-height:1.7;font-size:.94rem}
+
+    /* Numbers */
+    .numbers{
+      display:grid;
+      grid-template-columns:1.3fr repeat(3,1fr);
+      gap:16px;
+      align-items:stretch;
+    }
+    .number-intro,.number{
+      border-radius:var(--radius);
+      padding:30px;
+      background:var(--green-dark);
+      color:#fff;
+      min-height:225px;
+      position:relative;
+      overflow:hidden;
+    }
+    .number-intro::before{
+      content:"";
+      position:absolute;
+      width:220px;height:220px;
+      border-radius:50%;
+      background:rgba(19,200,107,.2);
+      right:-100px;bottom:-110px;
+    }
+    .number-intro h2{font-size:2.25rem;line-height:1}
+    .number-intro p{color:rgba(255,255,255,.66);margin-top:14px;line-height:1.6}
+    .number{
+      background:#fff;
+      color:var(--ink);
+      border:1px solid var(--line);
+      display:flex;
+      flex-direction:column;
+      justify-content:flex-end;
+      transition:.3s;
+    }
+    .number:hover{transform:translateY(-8px);box-shadow:var(--shadow)}
+    .number strong{
+      font:700 clamp(2.3rem,4vw,3.6rem) "Space Grotesk",sans-serif;
+      background:linear-gradient(100deg,var(--green),var(--orange));
+      -webkit-background-clip:text;background-clip:text;color:transparent;
+    }
+    .number span{font-size:.88rem;color:var(--muted);font-weight:700;margin-top:5px}
+
+    /* Build system */
+    .system{
+      display:grid;
+      grid-template-columns:.8fr 1.2fr;
+      gap:50px;
+      align-items:start;
+    }
+    .sticky-title{position:sticky;top:120px}
+    .sticky-title h2{font-size:clamp(2.5rem,5vw,4.6rem);line-height:.95}
+    .sticky-title p{color:var(--muted);line-height:1.7;margin-top:18px;max-width:390px}
+    .steps{display:grid;gap:13px}
+    .step{
+      display:grid;
+      grid-template-columns:60px 1fr auto;
+      gap:18px;
+      align-items:center;
+      padding:21px;
+      border-radius:22px;
+      background:rgba(255,255,255,.75);
+      border:1px solid var(--line);
+      transition:.3s;
+    }
+    .step:hover{transform:translateX(8px);background:#fff;box-shadow:0 16px 45px rgba(18,44,33,.08)}
+    .step-no{
+      width:48px;height:48px;
+      border-radius:15px;
+      display:grid;place-items:center;
+      background:#e9fbed;
+      color:var(--green-dark);
+      font-weight:800;
+    }
+    .step h3{font-size:1.06rem;letter-spacing:-.025em}
+    .step p{font-size:.83rem;color:var(--muted);margin-top:4px}
+    .step i{color:var(--orange)}
+
+    /* CTA */
+    .cta{
+      position:relative;
+      overflow:hidden;
+      padding:65px;
+      border-radius:38px;
+      background:
+        radial-gradient(circle at 88% 20%,rgba(255,138,0,.75),transparent 25%),
+        radial-gradient(circle at 15% 90%,rgba(123,77,255,.65),transparent 28%),
+        linear-gradient(135deg,#063b2a,#0a7147);
+      color:#fff;
+      box-shadow:0 30px 80px rgba(6,59,42,.2);
+    }
+    .cta::before,.cta::after{
+      content:"";
+      position:absolute;
+      border:1px solid rgba(255,255,255,.18);
+      border-radius:50%;
+    }
+    .cta::before{width:330px;height:330px;right:-100px;top:-190px}
+    .cta::after{width:220px;height:220px;left:-110px;bottom:-150px}
+    .cta-content{position:relative;z-index:2;max-width:740px}
+    .cta h2{font-size:clamp(2.4rem,5vw,4.7rem);line-height:.95}
+    .cta p{color:rgba(255,255,255,.72);margin-top:17px;line-height:1.7;max-width:580px}
+    .cta .btn{margin-top:25px;background:#fff;color:var(--green-dark)}
+
+    /* Footer */
+    footer{
+      padding:35px 0 45px;
+      margin-top:110px;
+      border-top:1px solid var(--line);
+    }
+    .footer-row{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:20px;
+    }
+    .footer-copy{color:var(--muted);font-size:.85rem}
+    .socials{display:flex;gap:8px}
+    .socials a{
+      width:40px;height:40px;
+      border-radius:12px;
+      display:grid;place-items:center;
+      background:#fff;
+      border:1px solid var(--line);
+      transition:.25s;
+    }
+    .socials a:hover{transform:translateY(-4px);background:var(--green);color:#063723}
+
+    /* Reveal */
+    .reveal{
+      opacity:0;
+      transform:translateY(28px);
+      transition:opacity .8s ease,transform .8s ease;
+    }
+    .reveal.show{opacity:1;transform:none}
+
+    /* Cursor glow */
+    .cursor-glow{
+      position:fixed;
+      width:280px;height:280px;
+      border-radius:50%;
+      pointer-events:none;
+      background:radial-gradient(circle,rgba(19,200,107,.12),transparent 68%);
+      transform:translate(-50%,-50%);
+      z-index:-1;
+    }
+
+    @media(max-width:900px){
+      .nav-links{
+        position:absolute;
+        top:70px;left:4%;
+        width:92%;
+        display:none;
+        padding:12px;
+        border-radius:20px;
+        background:rgba(6,34,25,.96);
+        box-shadow:0 20px 55px rgba(0,0,0,.2);
+      }
+      .nav-links.open{display:grid}
+      .nav-links a{color:#fff}
+      .nav-links a:hover,.nav-links a.active{color:#fff;background:rgba(255,255,255,.1)}
+      .nav-cta{background:var(--green)!important;color:#062719!important}
+      .menu-toggle{display:block}
+      .hero-grid,.system{grid-template-columns:1fr}
+      .hero{padding-top:130px}
+      .orbit-wrap{min-height:500px}
+      .philosophy{grid-template-columns:1fr}
+      .numbers{grid-template-columns:1fr 1fr}
+      .number-intro{grid-column:1/-1}
+      .sticky-title{position:static}
+      .section-head{align-items:start;flex-direction:column}
+    }
+
+    @media(max-width:600px){
+      .container{width:min(94%,1180px)}
+      .hero{padding-top:115px}
+      h1{font-size:3.35rem}
+      .hero-copy{font-size:.98rem}
+      .orbit{width:330px}
+      .center-card{width:175px;height:175px;border-radius:30px}
+      .center-card .logo{width:52px;height:52px;border-radius:17px;font-size:1.1rem;margin-bottom:8px}
+      .center-card strong{font-size:1.18rem}
+      .center-card span{font-size:.68rem}
+      .orbit-item{width:63px;height:63px;border-radius:18px;font-size:1rem}
+      .orbit-item small{font-size:.55rem;bottom:-19px}
+      .item5{right:10%}.item6{left:10%}
+      .numbers{grid-template-columns:1fr}
+      .number-intro{grid-column:auto}
+      .number{min-height:170px}
+      .step{grid-template-columns:50px 1fr}
+      .step > i{display:none}
+      .cta{padding:38px 25px;border-radius:28px}
+      .footer-row{flex-direction:column;align-items:flex-start}
+    }
+  </style>
+</head>
+
+<body>
+  <div class="ambient">
+    <span class="blob one"></span>
+    <span class="blob two"></span>
+    <span class="blob three"></span>
+  </div>
+  <div class="cursor-glow" id="cursorGlow"></div>
+
+  <!-- Navbar -->
+  <header id="header">
+    <div class="container nav">
+      <a class="brand" href="index.html">
+        <span class="brand-mark"><i class="fa-solid fa-bolt"></i></span>
+        Ajiz7onSite
+      </a>
+
+      <nav class="nav-links" id="navLinks">
+        <a href="index.html">Home</a>
+        <a href="portfolio.html">Portfolio</a>
+        <a href="about.html" class="active">About</a>
+        <a href="process.html">Process</a>
+        <a href="about.html#contact" class="nav-cta">Let’s Talk <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+      </nav>
+
+      <button class="menu-toggle" id="menuToggle" aria-label="Open menu">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="reveal">
+          <div class="eyebrow"><i class="fa-solid fa-circle-check"></i> Built for the food web</div>
+          <h1>Websites made to <span class="gradient-text">look alive.</span></h1>
+          <p class="hero-copy">
+            Ajiz7onSite is a growing collection of live food and restaurant website templates.
+            Simple code, strong visuals, useful interactions, and a real website feel.
+          </p>
+
+          <div class="hero-actions">
+            <a href="portfolio.html" class="btn btn-primary">
+              Explore Portfolio <i class="fa-solid fa-arrow-right"></i>
+            </a>
+            <a href="#contact" class="btn btn-light">
+              Let’s Talk
+            </a>
+          </div>
+        </div>
+
+        <div class="orbit-wrap reveal">
+          <div class="orbit">
+            <div class="center-card">
+              <div class="logo"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+              <strong>Ajiz7onSite</strong>
+              <span>Food web templates</span>
+            </div>
+
+            <div class="orbit-item item1">
+              <i class="fa-solid fa-burger"></i>
+              <small>Food</small>
+            </div>
+            <div class="orbit-item item2">
+              <i class="fa-solid fa-mobile-screen-button"></i>
+              <small>Responsive</small>
+            </div>
+            <div class="orbit-item item3">
+              <i class="fa-solid fa-code"></i>
+              <small>Clean Code</small>
+            </div>
+            <div class="orbit-item item4">
+              <i class="fa-solid fa-bolt"></i>
+              <small>Fast Feel</small>
+            </div>
+            <div class="orbit-item item5">
+              <i class="fa-solid fa-palette"></i>
+              <small>Visual</small>
+            </div>
+            <div class="orbit-item item6">
+              <i class="fa-solid fa-layer-group"></i>
+              <small>Templates</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Moving statement -->
+    <div class="ticker">
+      <div class="ticker-track">
+        <div class="ticker-item">Live previews <i class="fa-solid fa-star"></i> Food templates <i class="fa-solid fa-star"></i> Responsive layouts <i class="fa-solid fa-star"></i> Built with HTML CSS JS <i class="fa-solid fa-star"></i></div>
+        <div class="ticker-item">Live previews <i class="fa-solid fa-star"></i> Food templates <i class="fa-solid fa-star"></i> Responsive layouts <i class="fa-solid fa-star"></i> Built with HTML CSS JS <i class="fa-solid fa-star"></i></div>
+      </div>
+    </div>
+
+    <!-- Philosophy -->
+    <section>
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <div class="kicker">The idea</div>
+            <h2>Less stock.<br>More character.</h2>
+          </div>
+          <p>
+            Every template is designed around a clear food identity, so visitors can understand the product before they even start scrolling.
+          </p>
+        </div>
+
+        <div class="philosophy">
+          <article class="feature reveal">
+            <div class="feature-icon"><i class="fa-solid fa-eye"></i></div>
+            <h3>Instant visual</h3>
+            <p>Strong first screens, clear hierarchy, and product-focused layouts built to catch attention quickly.</p>
+          </article>
+
+          <article class="feature reveal">
+            <div class="feature-icon"><i class="fa-solid fa-layer-group"></i></div>
+            <h3>Useful structure</h3>
+            <p>Menus, stories, galleries, reviews, FAQs, and ordering flows are organized around real customer journeys.</p>
+          </article>
+
+          <article class="feature reveal">
+            <div class="feature-icon"><i class="fa-solid fa-code"></i></div>
+            <h3>Ready to edit</h3>
+            <p>Static HTML, CSS, and JavaScript keep the templates easy to understand, customize, and deploy.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Numbers -->
+    <section>
+      <div class="container">
+        <div class="numbers">
+          <div class="number-intro reveal">
+            <div class="kicker" style="color:#6ff0ae">At a glance</div>
+            <h2>Built for<br>real screens.</h2>
+            <p>Explore the actual websites in the portfolio instead of judging a template from a static thumbnail.</p>
+          </div>
+
+          <div class="number reveal">
+            <strong>20</strong>
+            <span>Live projects</span>
+          </div>
+
+          <div class="number reveal">
+            <strong>100%</strong>
+            <span>Responsive focus</span>
+          </div>
+
+          <div class="number reveal">
+            <strong>3</strong>
+            <span>Core technologies</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Build system -->
+    <section>
+      <div class="container system">
+        <div class="sticky-title reveal">
+          <div class="kicker">How it feels</div>
+          <h2>Designed like a product.</h2>
+          <p>
+            The goal is not to fill a page. It is to create a template that feels ready to become a real food brand.
+          </p>
+        </div>
+
+        <div class="steps">
+          <article class="step reveal">
+            <div class="step-no">01</div>
+            <div>
+              <h3>Start with the food</h3>
+              <p>Identity, mood, color, and product direction come first.</p>
+            </div>
+            <i class="fa-solid fa-arrow-right"></i>
+          </article>
+
+          <article class="step reveal">
+            <div class="step-no">02</div>
+            <div>
+              <h3>Shape the experience</h3>
+              <p>Sections are arranged around discovery, trust, and action.</p>
+            </div>
+            <i class="fa-solid fa-arrow-right"></i>
+          </article>
+
+          <article class="step reveal">
+            <div class="step-no">03</div>
+            <div>
+              <h3>Add movement</h3>
+              <p>Scroll reveals, hover states, floating details, and subtle motion add energy.</p>
+            </div>
+            <i class="fa-solid fa-arrow-right"></i>
+          </article>
+
+          <article class="step reveal">
+            <div class="step-no">04</div>
+            <div>
+              <h3>Make it responsive</h3>
+              <p>The layout adapts from desktop screens to compact mobile displays.</p>
+            </div>
+            <i class="fa-solid fa-arrow-right"></i>
+          </article>
+
+          <article class="step reveal">
+            <div class="step-no">05</div>
+            <div>
+              <h3>Ship the template</h3>
+              <p>Simple files make the final product easy to edit and deploy.</p>
+            </div>
+            <i class="fa-solid fa-arrow-right"></i>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact CTA -->
+    <section id="contact">
+      <div class="container">
+        <div class="cta reveal">
+          <div class="cta-content">
+            <div class="kicker" style="color:#7dffb5">Have an idea?</div>
+            <h2>Let’s make it feel like a real brand.</h2>
+            <p>
+              Looking for a food website template, a custom direction, or simply want to explore the collection?
+              Start with the live portfolio.
+            </p>
+            <a href="portfolio.html" class="btn">
+              View Live Portfolio <i class="fa-solid fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container footer-row">
+      <div class="footer-copy">© 2026 Ajiz7onSite. All rights reserved.</div>
+      <div class="socials">
+        <a href="https://github.com/Ajiz7onSite" target="_blank" rel="noopener" aria-label="GitHub">
+          <i class="fa-brands fa-github"></i>
+        </a>
+        <a href="portfolio.html" aria-label="Portfolio">
+          <i class="fa-solid fa-grid-2"></i>
+        </a>
+        <a href="about.html#contact" aria-label="Contact">
+          <i class="fa-solid fa-paper-plane"></i>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Navbar scroll state
+    const header = document.getElementById("header");
+    window.addEventListener("scroll", () => {
+      header.classList.toggle("scrolled", window.scrollY > 40);
+    }, { passive:true });
+
+    // Mobile menu
+    const menuToggle = document.getElementById("menuToggle");
+    const navLinks = document.getElementById("navLinks");
+
+    menuToggle.addEventListener("click", () => {
+      navLinks.classList.toggle("open");
+      const icon = menuToggle.querySelector("i");
+      icon.classList.toggle("fa-bars");
+      icon.classList.toggle("fa-xmark");
+    });
+
+    navLinks.querySelectorAll("a").forEach(link => {
+      link.addEventListener("click", () => {
+        navLinks.classList.remove("open");
+        const icon = menuToggle.querySelector("i");
+        icon.classList.add("fa-bars");
+        icon.classList.remove("fa-xmark");
+      });
+    });
+
+    // Scroll reveal
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, index) => {
+        if(entry.isIntersecting){
+          entry.target.style.transitionDelay = (index % 4) * 70 + "ms";
+          entry.target.classList.add("show");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold:.12 });
+
+    document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
+
+    // Cursor glow
+    const glow = document.getElementById("cursorGlow");
+    window.addEventListener("pointermove", e => {
+      glow.style.left = e.clientX + "px";
+      glow.style.top = e.clientY + "px";
+    }, { passive:true });
+
+    // Gentle parallax on orbit
+    const orbitWrap = document.querySelector(".orbit-wrap");
+    window.addEventListener("scroll", () => {
+      if(window.innerWidth > 900){
+        const y = window.scrollY * .08;
+        orbitWrap.style.transform = `translateY(${y}px)`;
+      }
+    }, { passive:true });
+  </script>
+</body>
+</html>
